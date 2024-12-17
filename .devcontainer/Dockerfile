@@ -26,7 +26,7 @@ RUN cd /home/vscode/azure-pipelines \
     && /home/vscode/azure-pipelines/bin/installdependencies.sh
 
 # copy over the start.sh script
-COPY library-scripts/start.sh /home/vscode/azure-pipelines/start.sh
+COPY codespaceADOagent/library-scripts/start.sh /home/vscode/azure-pipelines/start.sh
 
 # Apply ownership of home folder
 RUN chown -R vscode ~vscode
