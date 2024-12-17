@@ -10,7 +10,7 @@ ARG UPGRADE_PACKAGES="false"
 ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
-COPY library-scripts/*.sh /tmp/library-scripts/
+COPY scripts/*.sh /tmp/scripts/
 RUN bash /tmp/library-scripts/common-debian.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" "${UPGRADE_PACKAGES}" "true" "true"
 
 # cd into the user directory, download and unzip the Azure DevOps agent
@@ -26,7 +26,7 @@ RUN cd /home/vscode/azure-pipelines \
     && /home/vscode/azure-pipelines/bin/installdependencies.sh
 
 # copy over the start.sh script
-COPY codespaceADOagent/library-scripts/start.sh /home/vscode/azure-pipelines/start.sh
+COPY scripts/start.sh /home/vscode/azure-pipelines/start.sh
 
 # Apply ownership of home folder
 RUN chown -R vscode ~vscode
